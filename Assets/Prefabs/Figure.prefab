@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3663102383320597264}
   - component: {fileID: 3663102383320597279}
+  - component: {fileID: 1437135088}
   m_Layer: 0
   m_Name: Figure
   m_TagString: Untagged
@@ -46,7 +47,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 
   CurrentPosition: 
+  Controller: {fileID: 0}
   Board: {fileID: 0}
+--- !u!65 &1437135088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3663102383320597265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.51884353, y: 0.49635935, z: 0.5206318}
+  m_Center: {x: 0.004885614, y: 0.2586915, z: 0.001713261}
 --- !u!1 &3663102383841388233
 GameObject:
   m_ObjectHideFlags: 0
