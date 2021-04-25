@@ -34,8 +34,6 @@ public class GameController : MonoBehaviour
                 GameObject tmp = Board.transform.Find("Plane").gameObject;
                 GameObject Tile = tmp.transform.Find(tile_str).gameObject;
                 Bounds TileBounds = Tile.transform.GetChild(0).gameObject.GetComponent<MeshFilter>().mesh.bounds;
-                //TileBounds.center = Tile.transform.position;
-                //TileBounds.extents = new Vector3(0.1f, 2f, 0.1f);
                 Tiles[i, j] = Tile;
             }
         }

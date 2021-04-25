@@ -34,24 +34,21 @@ public class FigureController : MonoBehaviour
         if (isMoving)
         {
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, ZPosition);
-            transform.position = MainCamera.ScreenToWorldPoint(position + new Vector3(offset.x, offset.y));
+            transform.position = MainCamera.ScreenToWorldPoint(position + new Vector3(offset.x, 0));
+            Vector3 check_position = MainCamera.ScreenToWorldPoint(position + new Vector3(offset.x, 0));
+            check_position.y = 0;
 
             for(int i=0; i<8; i++)
             {
                 for(int j=0; j<8; j++)
                 {
                     MeshCollider TileCollider = Controller.Tiles[i, j].transform.GetChild(0).gameObject.GetComponent<MeshCollider>();
-                    if (TileCollider.bounds.Contains(transform.position)){
-                        // Debug.Log(Controller.Tiles[i, j].name);
+                    if (TileCollider.bounds.Contains(check_position)){
                         lastTile = Controller.Tiles[i, j].name;
                         break;
                     }
                 }
             }
-
-            //Debug.Log("Pozycja: " + transform.position);
-            //Debug.Log("Bounds: " + a1.bounds.center + "\nExtents: " + a1.bounds.extents);
-            //Debug.Log(a1.bounds.Contains(transform.position));
         }
     }
 
@@ -81,7 +78,8 @@ public class FigureController : MonoBehaviour
     void EndDragging()
     {
         isMoving = false;
-        Vector3 position = MainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, ZPosition) + new Vector3(offset.x, offset.y)); ;
+        Vector3 position = MainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, ZPosition) + new Vector3(offset.x, 0));
+        position.y = 0;
         MeshCollider BoardCollider = Board.transform.GetChild(0).gameObject.GetComponent<MeshCollider>();
 
         if (BoardCollider.bounds.Contains(position)){
@@ -90,20 +88,17 @@ public class FigureController : MonoBehaviour
         {
             ChangePosition(startTile);
         }
-        //ChangePosition(lastTile);
     }
 
     void ChangePosition(string TileName)
 	{
         List<int> indices = Controller.tile_to_index(TileName);
-        if (indices[0] > 8 || indices[0] < 1 || indices[1] > 8 || indices[1] < 0)
+        if (indices[0] > 8 || indices[0] < 0 || indices[1] > 8 || indices[1] < 0)
         {
             Debug.Log("Wrong tile name");
         }
         GameObject tmp = Board.transform.Find("Plane").gameObject;
-        // Debug.Log(indices[0] + " " + indices[1]);
         CurrentPosition = TileName;
-        //GameObject Tile = tmp.transform.Find(TileName).gameObject;
         GameObject Tile = Controller.Tiles[indices[0], indices[1]];
         transform.Translate(Tile.transform.position-transform.position);
         FindPossibleMoves();
