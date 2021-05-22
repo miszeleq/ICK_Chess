@@ -8,6 +8,8 @@ public class FigureController : MonoBehaviour
     public string CurrentPosition;
     public GameController Controller;
     public GameObject Board;
+    public GameObject Pointer;
+    public Rigidbody m_Rigidbody;
 
     private List<string> PossibleMoves;
     private Vector3 screenPoint;
@@ -17,6 +19,7 @@ public class FigureController : MonoBehaviour
     private Camera MainCamera;
     private string startTile;
     private string lastTile;
+    private GameObject Cursor;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class FigureController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (isMoving)
         {
             Vector3 position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, ZPosition);
@@ -49,6 +53,37 @@ public class FigureController : MonoBehaviour
                     }
                 }
             }
+        }
+        */
+
+        if (isMoving)
+        {
+            transform.position = Cursor.transform.position;
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        bool Clicked = false;
+        Cursor = other.gameObject;
+        if (Input.GetKeyDown("enter") || Input.GetMouseButtonDown(0))
+        {
+            if (isMoving && !Clicked)
+            {
+                isMoving = false;
+                print("s");
+                Clicked = true;
+            }
+            else if (!isMoving && !Clicked)
+            {
+                isMoving = true;
+                print("a");
+                Clicked = true;
+            }
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            Clicked = false;
         }
     }
 
