@@ -14,7 +14,9 @@ public class FigureController : MonoBehaviour
     private List<string> PossibleMoves;
     private Vector3 screenPoint;
     private Vector3 offset;
-    private bool isMoving;
+    public bool Clicked;
+    public bool isMoving;
+    public bool Active;
     private float ZPosition;
     private Camera MainCamera;
     private string startTile;
@@ -27,8 +29,12 @@ public class FigureController : MonoBehaviour
         startTile = "e4";
         MainCamera = Controller.MainCamera;
         isMoving = false;
+        Clicked = false;
+        Active = false;
         PossibleMoves = new List<string>();
         ZPosition = MainCamera.WorldToScreenPoint(transform.position).z;
+        ChangePosition(CurrentPosition);
+        //controllerScript cur = Cursor.GetComponent<PointerController>();
     }
 
     // Update is called once per frame
@@ -56,42 +62,47 @@ public class FigureController : MonoBehaviour
         }
         */
 
+        if (Active)
+        {
+            if (Input.GetKeyDown("return") || Input.GetMouseButtonDown(0))
+            {
+                isMoving = true;
+                print("aa");
+            }
+            
+        }
+
         if (isMoving)
         {
-            transform.position = Cursor.transform.position;
+            if (Pointer.GetComponent<PointerController>().CurrentPosition != CurrentPosition)
+            {
+                if (Input.GetKeyDown("return") || Input.GetMouseButtonDown(0))
+                {
+                    ChangePosition(Pointer.GetComponent<PointerController>().CurrentPosition);
+                    isMoving = false;
+                    Clicked = false;
+                    print("bb");
+                }
+            }
+            
         }
     }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter()
     {
-        bool Clicked = false;
-        Cursor = other.gameObject;
-        if (Input.GetKeyDown("enter") || Input.GetMouseButtonDown(0))
-        {
-            if (isMoving && !Clicked)
-            {
-                isMoving = false;
-                print("s");
-                Clicked = true;
-            }
-            else if (!isMoving && !Clicked)
-            {
-                isMoving = true;
-                print("a");
-                Clicked = true;
-            }
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            Clicked = false;
-        }
+        Active = true;
+    }
+
+    void OnTriggerExit()
+    {
+        Active = false;
     }
 
     void FindPossibleMoves()
     {
 
     }
-
+    /*
     void OnMouseDown()
     {
         startTile = CurrentPosition;
@@ -124,7 +135,7 @@ public class FigureController : MonoBehaviour
             ChangePosition(startTile);
         }
     }
-
+    */
     void ChangePosition(string TileName)
 	{
         List<int> indices = Controller.tile_to_index(TileName);
