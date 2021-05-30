@@ -64,6 +64,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3663102383320597279, guid: 751f07bcad38bf44487d72a11c7e04c2, type: 3}
+      propertyPath: color
+      value: white
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663102383320597279, guid: 751f07bcad38bf44487d72a11c7e04c2, type: 3}
       propertyPath: Controller
       value: 
       objectReference: {fileID: 0}

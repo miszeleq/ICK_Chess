@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3663102383320597265, guid: 751f07bcad38bf44487d72a11c7e04c2, type: 3}
       propertyPath: m_Name
-      value: KNIGHT
+      value: KNIGHT 1
       objectReference: {fileID: 0}
     - target: {fileID: 3663102383320597279, guid: 751f07bcad38bf44487d72a11c7e04c2, type: 3}
       propertyPath: Type
@@ -62,6 +62,10 @@ PrefabInstance:
     - target: {fileID: 3663102383320597279, guid: 751f07bcad38bf44487d72a11c7e04c2, type: 3}
       propertyPath: Board
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663102383320597279, guid: 751f07bcad38bf44487d72a11c7e04c2, type: 3}
+      propertyPath: color
+      value: black
       objectReference: {fileID: 0}
     - target: {fileID: 3663102383320597279, guid: 751f07bcad38bf44487d72a11c7e04c2, type: 3}
       propertyPath: Pointer
