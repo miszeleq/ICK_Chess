@@ -7,6 +7,7 @@ public class FigureController : MonoBehaviour
     public string Type;
     public string CurrentPosition;
     public string color;
+    public bool firstMove;
     public GameController Controller;
     public GameObject Board;
     public GameObject Pointer;
@@ -28,6 +29,7 @@ public class FigureController : MonoBehaviour
     void Start()
     {
         MainCamera = Controller.MainCamera;
+        firstMove = true;
         isMoving = false;
         Clicked = false;
         Active = false;
@@ -66,6 +68,7 @@ public class FigureController : MonoBehaviour
             if (Input.GetKeyDown("return") || Input.GetMouseButtonDown(0))
             {
                 FindPossibleMoves();
+                PossibleMoves.ForEach(Debug.Log);
                 startTile = CurrentPosition;
                 isMoving = true;
                 print("aa");
@@ -128,6 +131,22 @@ public class FigureController : MonoBehaviour
         }
     }
 
+    void checkMoveWithoutCapture(int ind_1, int ind_2)
+    {
+        TileCheck Tile = GetTileCheck(ind_1, ind_2);
+        if (Tile.Figure == null)
+        {
+            PossibleMoves.Add(Controller.index_to_tile(ind_1, ind_2));
+        }
+        else
+        {
+            if (GetFigureController(Tile).color != color)
+            {
+                PossibleMoves.Add(Controller.index_to_tile(ind_1, ind_2));
+            }
+        }
+    }
+
     void CaptureFigure(GameObject Figure)
     {
         Destroy(Figure.gameObject);
@@ -161,6 +180,18 @@ public class FigureController : MonoBehaviour
                             checkMove(indices[0] - 1, indices[1] + 1);
                         }
                     }
+
+                    if(firstMove == true)
+                    {
+                        if (indices[1] + 2 <= 7)
+                        {
+                            TileCheck Tile = GetTileCheck(indices[0], indices[1] + 2);
+                            if (Tile.Figure == null)
+                            {
+                                PossibleMoves.Add(Controller.index_to_tile(indices[0], indices[1] + 2));
+                            }
+                        }
+                    }
                 }
                 else if (color == "black")
                 {
@@ -179,6 +210,18 @@ public class FigureController : MonoBehaviour
                         if (indices[0] - 1 >= 0)
                         {
                             checkMove(indices[0] - 1, indices[1] - 1);
+                        }
+                    }
+
+                    if (firstMove == true)
+                    {
+                        if (indices[1] - 2 >= 0)
+                        {
+                            TileCheck Tile = GetTileCheck(indices[0], indices[1] - 2);
+                            if (Tile.Figure == null)
+                            {
+                                PossibleMoves.Add(Controller.index_to_tile(indices[0], indices[1] - 2));
+                            }
                         }
                     }
                 }
@@ -265,42 +308,43 @@ public class FigureController : MonoBehaviour
                 // 2 up 1 left
                 if (indices[0] - 1 >= 0 && indices[1] + 2 <= 7)
                 {
-                    checkMove(indices[0] - 1, indices[1] + 2);
+                    
+                    checkMoveWithoutCapture(indices[0] - 1, indices[1] + 2);
                 }
                 // 2 up 1 right
                 if (indices[0] + 1 <= 7 && indices[1] + 2 <= 7)
                 {
-                    checkMove(indices[0] + 1, indices[1] + 2);
+                    checkMoveWithoutCapture(indices[0] + 1, indices[1] + 2);
                 }
                 // 2 down 1 left
                 if (indices[0] - 1 >= 0 && indices[1] - 2 >= 0)
                 {
-                    checkMove(indices[0] - 1, indices[1] - 2);
+                    checkMoveWithoutCapture(indices[0] - 1, indices[1] - 2);
                 }
                 // 2 down 1 right
                 if (indices[0] + 1 <= 7 && indices[1] - 2 >= 0)
                 {
-                    checkMove(indices[0] + 1, indices[1] - 2);
+                    checkMoveWithoutCapture(indices[0] + 1, indices[1] - 2);
                 }
                 // 2 right 1 up
                 if (indices[0] + 2 <= 7 && indices[1] + 1 <= 7)
                 {
-                    checkMove(indices[0] + 2, indices[1] + 1);
+                    checkMoveWithoutCapture(indices[0] + 2, indices[1] + 1);
                 }
                 // 2 right 1 down
                 if (indices[0] + 2 <= 7 && indices[1] - 1 >= 0)
                 {
-                    checkMove(indices[0] + 2, indices[1] - 1);
+                    checkMoveWithoutCapture(indices[0] + 2, indices[1] - 1);
                 }
                 // 2 left 1 up
                 if (indices[0] - 2 >= 0 && indices[1] + 1 <= 7)
                 {
-                    checkMove(indices[0] - 2, indices[1] + 1);
+                    checkMoveWithoutCapture(indices[0] - 2, indices[1] + 1);
                 }
                 // 2 left 1 down
                 if (indices[0] - 2 >= 0 && indices[1] - 1 >= 0)
                 {
-                    checkMove(indices[0] - 2, indices[1] - 1);
+                    checkMoveWithoutCapture(indices[0] - 2, indices[1] - 1);
                 }
                 break;
             // bishop
@@ -417,42 +461,42 @@ public class FigureController : MonoBehaviour
                 // right
                 if (indices[0] + 1 <= 7)
                 {
-                    checkMove(indices[0] + 1, indices[1]);
+                    checkMoveWithoutCapture(indices[0] + 1, indices[1]);
                 }
                 // up right
                 if (indices[0] + 1 <= 7 && indices[1] + 1 <= 7)
                 {
-                    checkMove(indices[0] + 1, indices[1] + 1);
+                    checkMoveWithoutCapture(indices[0] + 1, indices[1] + 1);
                 }
                 // down right
                 if (indices[0] + 1 <= 7 && indices[1] - 1 >= 0)
                 {
-                    checkMove(indices[0] + 1, indices[1] - 1);
+                    checkMoveWithoutCapture(indices[0] + 1, indices[1] - 1);
                 }
                 // left
                 if (indices[0] - 1 >= 0)
                 {
-                    checkMove(indices[0] - 1, indices[1]);
+                    checkMoveWithoutCapture(indices[0] - 1, indices[1]);
                 }
                 // up left
                 if (indices[0] - 1 >= 0 && indices[1] - 1 >= 0)
                 {
-                    checkMove(indices[0] - 1, indices[1] - 1);
+                    checkMoveWithoutCapture(indices[0] - 1, indices[1] - 1);
                 }
                 // down left
                 if (indices[0] + 1 <= 7 && indices[1] - 1 >= 0)
                 {
-                    checkMove(indices[0] + 1, indices[1] - 1);
+                    checkMoveWithoutCapture(indices[0] + 1, indices[1] - 1);
                 }
                 // down
                 if (indices[1] - 1 >= 0)
                 {
-                    checkMove(indices[0], indices[1] - 1);
+                    checkMoveWithoutCapture(indices[0], indices[1] - 1);
                 }
                 // up
                 if (indices[1] + 1 <= 7)
                 {
-                    checkMove(indices[0], indices[1] + 1);
+                    checkMoveWithoutCapture(indices[0], indices[1] + 1);
                 }
                 break;
             // queen
@@ -697,6 +741,12 @@ public class FigureController : MonoBehaviour
             nextTile.Figure = gameObject;
         }
         CurrentPosition = TileName;
+
+        if(firstMove == true)
+        {
+            firstMove = false;
+        }
+
         FindPossibleMoves();
     }
 }
