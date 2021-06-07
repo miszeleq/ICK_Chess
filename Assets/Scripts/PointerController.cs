@@ -99,6 +99,11 @@ public class PointerController : MonoBehaviour
             }
         }
 
+        if(lastTile == null)
+        {
+            lastTile = CurrentPosition;
+        }
+
         ChangePosition(lastTile);
     }
 
