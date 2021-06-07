@@ -25,6 +25,56 @@ public class PointerController : MonoBehaviour
         ZPosition = MainCamera.WorldToScreenPoint(transform.position).z;
     }
 
+    public void MoveUp()
+    {
+        int tmpPos;
+        tmpPos = CurrentPosition.ToCharArray()[1] - '0' + 1;
+        if (tmpPos == 9)
+        {
+            tmpPos = 1;
+        }
+        lastTile = CurrentPosition.Remove(1) + tmpPos.ToString();
+        print(lastTile);
+    }
+
+    public void MoveDown()
+    {
+        int tmpPos;
+        tmpPos = CurrentPosition.ToCharArray()[1] - '0' - 1;
+        if (tmpPos == 0)
+        {
+            tmpPos = 8;
+        }
+        lastTile = CurrentPosition.Remove(1) + tmpPos.ToString();
+        print(lastTile);
+    }
+
+    public void MoveRight()
+    {
+        char tmpPos;
+        tmpPos = CurrentPosition.ToCharArray()[0];
+        tmpPos++;
+        if (tmpPos == 'i')
+        {
+            tmpPos = 'a';
+        }
+        lastTile = tmpPos.ToString() + CurrentPosition.Remove(0, 1);
+        print(lastTile);
+    }
+
+    public void MoveLeft()
+    {
+        char tmpPos;
+        tmpPos = CurrentPosition.ToCharArray()[0];
+        tmpPos--;
+        if (tmpPos < 'a')
+        {
+            tmpPos = 'h';
+        }
+        lastTile = tmpPos.ToString() + CurrentPosition.Remove(0, 1);
+        print(lastTile);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -35,52 +85,22 @@ public class PointerController : MonoBehaviour
 
         if (Input.GetKeyDown("up"))
         {
-            int tmpPos;
-            tmpPos = CurrentPosition.ToCharArray()[1] - '0' + 1;
-            if (tmpPos == 9)
-            {
-                tmpPos = 1;
-            }
-            lastTile = CurrentPosition.Remove(1) + tmpPos.ToString();
-            print(lastTile);
+            MoveUp();
         }
 
         if (Input.GetKeyDown("down"))
         {
-            int tmpPos;
-            tmpPos = CurrentPosition.ToCharArray()[1] - '0' - 1;
-            if (tmpPos == 0)
-            {
-                tmpPos = 8;
-            }
-            lastTile = CurrentPosition.Remove(1) + tmpPos.ToString();
-            print(lastTile);
+            MoveDown();
         }
 
         if (Input.GetKeyDown("right"))
         {
-            char tmpPos;
-            tmpPos = CurrentPosition.ToCharArray()[0];
-            tmpPos++;
-            if (tmpPos == 'i')
-            {
-                tmpPos = 'a';
-            }
-            lastTile = tmpPos.ToString() + CurrentPosition.Remove(0, 1);
-            print(lastTile);
+            MoveRight();
         }
 
         if (Input.GetKeyDown("left"))
         {
-            char tmpPos;
-            tmpPos = CurrentPosition.ToCharArray()[0];
-            tmpPos--;
-            if (tmpPos < 'a')
-            {
-                tmpPos = 'h';
-            }
-            lastTile = tmpPos.ToString() + CurrentPosition.Remove(0, 1);
-            print(lastTile);
+            MoveLeft();
         }
 
         if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
