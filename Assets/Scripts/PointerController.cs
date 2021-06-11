@@ -7,6 +7,7 @@ public class PointerController : MonoBehaviour
 {
     public GameController Controller;
     public GameObject Board;
+	public SocketCommunication SocketCommunication;
     public string CurrentPosition;
 
     private List<string> PossibleMoves;
@@ -83,24 +84,28 @@ public class PointerController : MonoBehaviour
         Vector3 check_position = MainCamera.ScreenToWorldPoint(position + new Vector3(offset.x, 0));
         check_position.y = 0;
 
-        if (Input.GetKeyDown("up"))
+        if (Input.GetKeyDown("up") || SocketCommunication.signal == "UP")
         {
             MoveUp();
+            SocketCommunication.signal = "None";
         }
 
-        if (Input.GetKeyDown("down"))
+        if (Input.GetKeyDown("down") || SocketCommunication.signal == "DOWN")
         {
             MoveDown();
+            SocketCommunication.signal = "None";
         }
 
-        if (Input.GetKeyDown("right"))
+        if (Input.GetKeyDown("right") || SocketCommunication.signal == "RIGHT")
         {
             MoveRight();
+            SocketCommunication.signal = "None";
         }
 
-        if (Input.GetKeyDown("left"))
+        if (Input.GetKeyDown("left") || SocketCommunication.signal == "LEFT")
         {
             MoveLeft();
+            SocketCommunication.signal = "None";
         }
 
         if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)

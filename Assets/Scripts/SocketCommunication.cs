@@ -12,6 +12,7 @@ public class SocketCommunication : MonoBehaviour
     public string connectionIP = "127.0.0.1";
     public int connectionPort = 25001;
     public GameObject Pointer;
+	public string signal = "None";
 
     Thread mThread;
     IPAddress localAdd;
@@ -77,27 +78,28 @@ public class SocketCommunication : MonoBehaviour
         //###################################
         if (dataReceived != null)
         {
-            //EXAMPLE OF VALIDATION FOR the module - MICROMOUSE
+            signal = dataReceived;
+            //EXAMPLE OF VALIDATION FOR the module - CAMERAMOUSE
 
             if (dataReceived == "LEFT")
             {
                 print("COMMAND: " + dataReceived);
-                Pointer.GetComponent<PointerController>().MoveLeft();
+                //Pointer.GetComponent<PointerController>().MoveLeft();
             }
             else if (dataReceived == "RIGHT")
             {
                 print("COMMAND: " + dataReceived);
-                Pointer.GetComponent<PointerController>().MoveRight();
+                //Pointer.GetComponent<PointerController>().MoveRight();
             }
             else if (dataReceived == "UP")
             {
                 print("COMMAND: " + dataReceived);
-                Pointer.GetComponent<PointerController>().MoveUp();
+                //Pointer.GetComponent<PointerController>().MoveUp();
             }
             else if (dataReceived == "DOWN")
             {
                 print("COMMAND: " + dataReceived);
-                Pointer.GetComponent<PointerController>().MoveDown();
+                //Pointer.GetComponent<PointerController>().MoveDown();
             }
             else
             {

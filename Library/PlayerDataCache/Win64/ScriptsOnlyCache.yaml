@@ -104,87 +104,87 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1580}
     - Class: 114
-      Script: {instanceID: 1588}
+      Script: {instanceID: 1594}
     - Class: 114
-      Script: {instanceID: 1814}
+      Script: {instanceID: 1820}
     - Class: 114
-      Script: {instanceID: 1896}
+      Script: {instanceID: 1902}
     - Class: 114
-      Script: {instanceID: 1922}
+      Script: {instanceID: 1928}
     - Class: 114
-      Script: {instanceID: 2006}
+      Script: {instanceID: 2012}
     - Class: 114
-      Script: {instanceID: 2244}
+      Script: {instanceID: 2250}
     - Class: 114
-      Script: {instanceID: 2294}
+      Script: {instanceID: 2300}
     - Class: 114
-      Script: {instanceID: 2296}
+      Script: {instanceID: 2302}
     - Class: 114
-      Script: {instanceID: 2320}
+      Script: {instanceID: 2326}
     - Class: 114
-      Script: {instanceID: 2614}
+      Script: {instanceID: 2620}
     - Class: 114
-      Script: {instanceID: 2718}
+      Script: {instanceID: 2724}
     - Class: 114
-      Script: {instanceID: 2748}
+      Script: {instanceID: 2754}
     - Class: 114
-      Script: {instanceID: 2890}
+      Script: {instanceID: 2896}
     - Class: 114
-      Script: {instanceID: 3090}
+      Script: {instanceID: 3096}
     - Class: 114
-      Script: {instanceID: 3132}
+      Script: {instanceID: 3138}
     - Class: 114
-      Script: {instanceID: 3154}
+      Script: {instanceID: 3160}
     - Class: 114
-      Script: {instanceID: 3250}
+      Script: {instanceID: 3256}
     - Class: 114
-      Script: {instanceID: 3258}
+      Script: {instanceID: 3264}
     - Class: 114
-      Script: {instanceID: 3388}
+      Script: {instanceID: 3394}
     - Class: 114
-      Script: {instanceID: 3454}
+      Script: {instanceID: 3460}
     - Class: 114
-      Script: {instanceID: 3506}
+      Script: {instanceID: 3512}
     - Class: 114
-      Script: {instanceID: 3632}
+      Script: {instanceID: 3638}
     - Class: 114
-      Script: {instanceID: 3770}
+      Script: {instanceID: 3776}
     - Class: 114
-      Script: {instanceID: 3790}
+      Script: {instanceID: 3796}
     - Class: 114
-      Script: {instanceID: 3808}
+      Script: {instanceID: 3814}
     - Class: 114
-      Script: {instanceID: 3878}
+      Script: {instanceID: 3884}
     - Class: 114
-      Script: {instanceID: 3944}
+      Script: {instanceID: 3950}
     - Class: 114
-      Script: {instanceID: 3984}
+      Script: {instanceID: 3990}
     - Class: 114
-      Script: {instanceID: 4018}
+      Script: {instanceID: 4024}
     - Class: 114
-      Script: {instanceID: 4102}
+      Script: {instanceID: 4108}
     - Class: 114
-      Script: {instanceID: 4106}
+      Script: {instanceID: 4112}
     - Class: 114
-      Script: {instanceID: 4168}
+      Script: {instanceID: 4174}
     - Class: 114
-      Script: {instanceID: 4272}
+      Script: {instanceID: 4278}
     - Class: 114
-      Script: {instanceID: 4434}
+      Script: {instanceID: 4440}
     - Class: 114
-      Script: {instanceID: 4848}
+      Script: {instanceID: 4854}
     - Class: 114
-      Script: {instanceID: 5012}
+      Script: {instanceID: 5018}
     - Class: 114
-      Script: {instanceID: 5060}
+      Script: {instanceID: 5066}
     - Class: 114
-      Script: {instanceID: 5176}
+      Script: {instanceID: 5182}
     - Class: 114
-      Script: {instanceID: 5426}
+      Script: {instanceID: 5432}
     - Class: 114
-      Script: {instanceID: 5474}
+      Script: {instanceID: 5480}
     - Class: 114
-      Script: {instanceID: 5826}
+      Script: {instanceID: 5832}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -666,7 +666,7 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: 1ae9fc325b25e33abe40617ac0ef800c
+      Hash: a69009c1e6e8718f9d1406a40f9f96f4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PointerController
@@ -924,7 +924,7 @@ ScriptsOnlyBuild:
     className: SceneRenderPipeline
   - hash:
       serializedVersion: 2
-      Hash: 3856008d6a343111bc91401441592b06
+      Hash: 819ec8c2ffef90d0da98985e6fc46df9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SocketCommunication
@@ -1063,4 +1063,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/MarcelScene.unity
-  playerPath: E:/Projekty/ICK_Chess/Build/ICK_Chess.exe
+  playerPath: C:/Users/miszeleq/Desktop/ICK/ICK_Chess2/Build/ICK_Chess.exe
